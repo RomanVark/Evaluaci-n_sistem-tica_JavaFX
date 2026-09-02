@@ -6,8 +6,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="410.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.registro_app.controller.RegistroController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="697.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.registro_app.controller.RegistroController">
    <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Nuevo">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Salir">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Acerca de">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
       <ImageView fx:id="imgLogoUam" fitHeight="52.0" fitWidth="344.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/LogoUAM.png" />
@@ -76,12 +95,23 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin></Button>
       <Label fx:id="lblRegistrosGuardados" text="Registros guardados." />
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnGuardar" mnemonicParsing="false" text="Guardar" />
+            <Button fx:id="btnActualizar" mnemonicParsing="false" text="Actualizar" />
+            <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" text="Eliminar" />
+         </children>
+      </HBox>
       <TableView fx:id="tbtablaRegistros" prefHeight="105.0" prefWidth="395.0">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="95.0" resizable="false" text="Nombre" />
           <TableColumn fx:id="colApellido" prefWidth="95.0" resizable="false" text="Apellido" />
-            <TableColumn fx:id="colCarrera" prefWidth="95.0" resizable="false" text="Carrera" />
-            <TableColumn fx:id="colFacultad" prefWidth="95.0" resizable="false" text="Facultad" />
+            <TableColumn fx:id="colCargo" prefWidth="95.0" resizable="false" text="Cargo" />
+            <TableColumn fx:id="colArea" prefWidth="95.0" resizable="false" text="Area" />
+           <TableColumn fx:id="colFecha" prefWidth="95.0" resizable="false" text="Fecha" />
+           <TableColumn fx:id="colContrato" prefWidth="95.0" resizable="false" text="Contrato" />
+           <TableColumn fx:id="colBeneficios" prefWidth="95.0" resizable="false" text="Beneficios" />
         </columns>
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
