@@ -109,8 +109,42 @@ public class RegistroController {
                 "Gerencia"
         );
 
+        colNombreCompleto.setCellValueFactory(
+                new PropertyValueFactory<>("nombreCompleto")
+        );
 
+        colCargo.setCellValueFactory(
+                new PropertyValueFactory<>("cargo")
+        );
 
+        colArea.setCellValueFactory(
+                new PropertyValueFactory<>("areaTrabajo")
+        );
+
+        colFecha.setCellValueFactory(
+                new PropertyValueFactory<>("fechaContratacion")
+        );
+
+        colContrato.setCellValueFactory(
+                new PropertyValueFactory<>("tipoContrato")
+        );
+
+        colBeneficios.setCellValueFactory(
+                new PropertyValueFactory<>("beneficios")
+        );
+
+        Image imagen = new Image(
+                getClass().getResourceAsStream(
+                        "/ni/edu/uam/registro_app/images/LogoUAM.png"
+                )
+        );
+
+        imgLogoUam.setImage(imagen);
+
+        cargarTabla();
     }
+
+
+}
 
 }
