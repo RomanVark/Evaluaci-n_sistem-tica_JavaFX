@@ -5,96 +5,90 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ni.edu.uam.registro_app.dao.RegistroDao;
-import ni.edu.uam.registro_app.modelos.Estudiante;
+import ni.edu.uam.registro_app.modelos.Colaborador;
 
 import java.time.LocalDate;
 
 public class RegistroController {
 
+    private final RegistroDao listado = new RegistroDao();
 
+    private int indiceSeleccionado = -1;
 
-    RegistroDao listado = new RegistroDao();
-    @FXML
-    public RadioButton rbDeterminado;
-    @FXML
-    public RadioButton rbIndeterminado;
     @FXML
     private TextField txtNombres;
+
     @FXML
     private TextField txtApellidos;
+
     @FXML
-    private DatePicker dpfechaCont;
+    private TextField txtUsuario;
+
     @FXML
-    private CheckBox chkBeneficios;
-    @FXML
-    private Label lblRegistro;
-    @FXML
-    private ImageView imgLogoUam;
+    private PasswordField txtContrasena;
+
     @FXML
     private ComboBox<String> combCargo;
-    @FXML
-    private TableView<Estudiante> tbtablaRegistros;
-    @FXML
-    private TableColumn<Estudiante, String> colNombre;
-    @FXML
-    private TableColumn<Estudiante, String> colApellido;
-    @FXML
-    private TableColumn<Estudiante, String> colCarrera;
-    @FXML
-    private TableColumn<Estudiante, String> colFacultad;
 
-    public void cargarTabla() {
-        ObservableList<Estudiante> estudiantes = FXCollections.observableArrayList(listado.obternerRegistros());
-        tbtablaRegistros.setItems(estudiantes);
-    }
+    @FXML
+    private ListView<String> lvAreaTrabajo;
 
+    @FXML
+    private DatePicker dpfechaCont;
 
+    @FXML
+    private RadioButton rbDeterminado;
 
+    @FXML
+    private RadioButton rbIndeterminado;
+
+    @FXML
+    private CheckBox chkSeguro;
+
+    @FXML
+    private CheckBox chkAlimentacion;
+
+    @FXML
+    private CheckBox chkTransporte;
+
+    @FXML
+    private ToggleGroup grupoContrato;
+
+    @FXML
+    private ImageView imgLogoUam;
+
+    @FXML
+    private TableView<Colaborador> tbtablaRegistros;
+
+    @FXML
+    private TableColumn<Colaborador, String> colNombreCompleto;
+
+    @FXML
+    private TableColumn<Colaborador, String> colCargo;
+
+    @FXML
+    private TableColumn<Colaborador, String> colArea;
+
+    @FXML
+    private TableColumn<Colaborador, LocalDate> colFecha;
+
+    @FXML
+    private TableColumn<Colaborador, String> colContrato;
+
+    @FXML
+    private TableColumn<Colaborador, String> colBeneficios;
+
+    @FXML
+    private Label lblRegistro;
 
     public void initialize() {
 
-        combGenero.getItems().addAll("Masculino", "Femenino", "Otro");
-
-        combFacultad.getItems().addAll("UAM College", "Facultad de Odontología",
-                "Facultad de Ciencias Médicas", "Facultad de Marketing, Diseño y Ciencias de la Comunicación",
-                "Facultad de Ciencias Administrativas y Económicas",
-                "Facultad de Ingeniería y Arquitectura",
-                "Facultad de Ciencias Jurídicas, Humanidades y Relaciones Internacionales",
-                "Language Center");
-
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        colApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-        colCarrera.setCellValueFactory(new PropertyValueFactory<>("carrera"));
-        colFacultad.setCellValueFactory(new PropertyValueFactory<>("facultad"));
-
-        Image imagen = new Image(getClass().getResourceAsStream("/ni/edu/uam/registro_app/images/LogoUAM.png"));
-        imgLogoUam.setImage(imagen);
     }
 
-    @FXML
-    protected void guardarOnClick(){
-        leerDatos();
-
-    }
-
-    private void  leerDatos(){
-        String nombre = txtNombres.getText();
-        String apellido = txtApellidos.getText();
-        String carrera = txtCarrera.getText();
-        LocalDate fechaNa = dpfechaNac.getValue();
-        Boolean beca = chktieneBeca.isSelected();
-        String genero = combGenero.getValue();
-        String facultad = combFacultad.getValue();
-        agregarDatos(new Estudiante(nombre,apellido,carrera,fechaNa,beca, genero, facultad));
-    }
-
-    private void agregarDatos(Estudiante estudiante) {
-
-        listado.agregar(estudiante);
-        lblRegistro.setText("Registros Guardados: " + listado.obternerRegistros().size());
-        cargarTabla();
-    }
 }
