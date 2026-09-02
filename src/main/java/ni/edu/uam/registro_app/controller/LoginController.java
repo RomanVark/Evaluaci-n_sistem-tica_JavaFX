@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import ni.edu.uam.registro_app.EstudianteApplication;
+import ni.edu.uam.registro_app.RegistroApp;
 
 public class LoginController {
 
@@ -41,8 +41,8 @@ public class LoginController {
         try {
 
             FXMLLoader loader = new FXMLLoader(
-                    EstudianteApplication.class.getResource(
-                            "estudiante-view.fxml"
+                    RegistroApp.class.getResource(
+                            "Registro-view.fxml"
                     )
             );
 

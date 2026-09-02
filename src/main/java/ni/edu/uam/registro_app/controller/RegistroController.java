@@ -7,13 +7,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import ni.edu.uam.registro_app.dao.EstudianteDao;
+import ni.edu.uam.registro_app.dao.RegistroDao;
 import ni.edu.uam.registro_app.modelos.Estudiante;
 
 import java.time.LocalDate;
 
-public class EstudianteController {
-    EstudianteDao listado = new EstudianteDao();
+public class RegistroController {
+    RegistroDao listado = new RegistroDao();
     @FXML
     private TextField txtNombres;
     @FXML

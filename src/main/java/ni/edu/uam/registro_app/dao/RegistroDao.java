@@ -6,11 +6,11 @@ import ni.edu.uam.registro_app.modelos.Estudiante;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EstudianteDao implements Crud<Estudiante> {
+public class RegistroDao implements Crud<Estudiante> {
 
      List<Estudiante> estudiantes;
 
-     public EstudianteDao(){
+     public RegistroDao(){
          estudiantes=new ArrayList<>();
      }
     @Override
