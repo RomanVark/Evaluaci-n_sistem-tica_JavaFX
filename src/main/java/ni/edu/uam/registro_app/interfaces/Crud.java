@@ -6,6 +6,12 @@ public interface Crud <T>{
 
     public void agregar(T entidad);
 
+    void actualizar(int indice, T entidad);
+
+    void eleminar(int indice);
+
     public List<T> obternerRegistros();
+
+
 
 }
