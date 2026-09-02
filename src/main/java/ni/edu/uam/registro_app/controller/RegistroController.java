@@ -89,6 +89,28 @@ public class RegistroController {
 
     public void initialize() {
 
+        combCargo.getItems().addAll(
+                "Administrador",
+                "Contador",
+                "Vendedor",
+                "Bodeguero",
+                "Cajero",
+                "Supervisor",
+                "Jefe"
+        );
+
+        lvAreaTrabajo.getItems().addAll(
+                "Recursos Humanos",
+                "Administracion",
+                "Ventas",
+                "Bodega",
+                "Caja",
+                "Supervisión",
+                "Gerencia"
+        );
+
+
+
     }
 
 }
