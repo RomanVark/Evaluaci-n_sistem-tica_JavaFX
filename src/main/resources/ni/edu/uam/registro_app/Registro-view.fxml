@@ -4,13 +4,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.registro_app.controller.RegistroController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="410.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.registro_app.controller.RegistroController">
    <children>
       <ImageView fx:id="imgLogoUam" fitHeight="52.0" fitWidth="344.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@LogoUAM.png" />
+            <Image url="@images/LogoUAM.png" />
          </image></ImageView>
+      <Label text="REGISTRO DE EMPLEADOS">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
       <Label text="Nombres">
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -27,15 +33,7 @@
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin></TextField>
-      <Label text="Fecha de nacimiento">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></Label>
-      <DatePicker fx:id="dpfechaNac" promptText="Ingrese su fecha de nacimiento">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></DatePicker>
-      <Label fx:id="lblGenero" text="Genero">
+      <Label fx:id="lblGenero" text="Cargo">
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin>
@@ -45,28 +43,34 @@
             <Insets />
          </VBox.margin>
       </ComboBox>
-      <Label text="Carrera">
+      <Label text="Area de Trabajo" />
+      <ListView prefHeight="200.0" prefWidth="200.0" />
+      <Label text="Fecha de contratación">
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin></Label>
-      <TextField fx:id="txtCarrera" promptText="ING. DE SISTEMAS">
-         <VBox.margin>
-            <Insets top="5.0" />
-         </VBox.margin></TextField>
-      <Label fx:id="lblFacultad" layoutX="196.0" layoutY="218.0" text="Facultad">
+      <DatePicker fx:id="dpfechaNac" promptText="Ingrese su fecha de nacimiento">
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
-      </Label>
-      <ComboBox fx:id="combFacultad" layoutX="140.0" layoutY="188.0" prefHeight="25.0" prefWidth="390.0">
+         </VBox.margin></DatePicker>
+      <Label text="Tipo de Contrato" />
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <VBox.margin>
-            <Insets />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
-      </ComboBox>
-      <CheckBox fx:id="chktieneBeca" mnemonicParsing="false" text="Tiene Beca">
-         <VBox.margin>
+         <children>
+            <RadioButton mnemonicParsing="false" text="RadioButton">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="RadioButton" />
+         </children>
+         <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></CheckBox>
+         </padding>
+      </HBox>
+      <CheckBox mnemonicParsing="false" text="Beneficios" />
       <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#guardarOnClick" text="Agregar">
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
