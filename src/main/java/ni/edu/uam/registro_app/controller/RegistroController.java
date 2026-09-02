@@ -167,15 +167,6 @@ public class RegistroController {
         String beneficios = obtenerBeneficios();
 
         return new Colaborador(
-                nombres,
-                apellidos,
-                usuario,
-                contrasena,
-                cargo,
-                area,
-                fecha,
-                contrato,
-                beneficios
         );
     }
 
