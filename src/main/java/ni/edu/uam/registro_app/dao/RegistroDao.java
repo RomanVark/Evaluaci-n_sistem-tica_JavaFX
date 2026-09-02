@@ -1,36 +1,27 @@
 package ni.edu.uam.registro_app.dao;
 
 import ni.edu.uam.registro_app.interfaces.Crud;
-import ni.edu.uam.registro_app.modelos.Colaborador;
+import ni.edu.uam.registro_app.modelos.Estudiante;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegistroDao implements Crud<Colaborador> {
+public class RegistroDao implements Crud<Estudiante> {
 
-    private final List<Colaborador> colaboradores;
+     List<Estudiante> estudiantes;
 
-    public RegistroDao() {
-        colaboradores = new ArrayList<>();
+     public RegistroDao(){
+         estudiantes=new ArrayList<>();
+     }
+    @Override
+    public void agregar(Estudiante entidad) {
+         estudiantes.add(entidad);
+
     }
 
     @Override
-    public void agregar(Colaborador entidad) {
-        colaboradores.add(entidad);
-    }
+    public List<Estudiante> obternerRegistros() {
 
-    @Override
-    public void actualizar(int indice, Colaborador entidad) {
-        colaboradores.set(indice, entidad);
-    }
-
-    @Override
-    public void eliminar(int indice) {
-        colaboradores.remove(indice);
-    }
-
-    @Override
-    public List<Colaborador> obternerRegistros() {
-        return colaboradores;
+         return estudiantes;
     }
 }

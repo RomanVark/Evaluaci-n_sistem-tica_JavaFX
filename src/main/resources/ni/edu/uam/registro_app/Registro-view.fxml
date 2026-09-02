@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import com.sun.javafx.scene.control.ContextMenuContent.ArrowMenuItem?>
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="748.0" prefWidth="697.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.registro_app.controller.RegistroController">
    <children>
       <MenuBar>
@@ -99,13 +100,21 @@
       <Label fx:id="lblRegistrosGuardados" text="Registros guardados." />
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
          <children>
-            <Button fx:id="btnGuardar" mnemonicParsing="false" text="Guardar" />
-            <Button fx:id="btnActualizar" mnemonicParsing="false" text="Actualizar" />
-            <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" />
-            <Button fx:id="btnEliminar" mnemonicParsing="false" text="Eliminar" />
+            <Button fx:id="btnGuardar" mnemonicParsing="false" text="Guardar" onAction="#guardarOnClick" />
+            <Button fx:id="btnActualizar" mnemonicParsing="false" text="Actualizar" onAction="#actualizarOnClick" />
+            <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" onAction="#limpiarOnClick"/>
+            <Button fx:id="btnEliminar" mnemonicParsing="false" text="Eliminar" onAction="#eliminarOnClick" />
          </children>
       </HBox>
-      <TableView fx:id="tbtablaRegistros" prefHeight="105.0" prefWidth="395.0">
+       <TableView fx:id="tbtablaRegistros" prefHeight="105.0" prefWidth="395.0">
+          <contextMenu>
+              <ContextMenu>
+                  <items>
+                      <MenuItem text="Editar" onAction="editarContextMenu"/>
+                      <MenuItem text="Eliminar" onAction="eliminarOnClick"/>
+                  </items>
+              </ContextMenu>
+          </contextMenu>
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="95.0" resizable="false" text="Nombre" />
           <TableColumn fx:id="colApellido" prefWidth="95.0" resizable="false" text="Apellido" />
