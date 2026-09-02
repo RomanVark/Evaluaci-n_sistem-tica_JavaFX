@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="697.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.registro_app.controller.RegistroController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="748.0" prefWidth="697.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.registro_app.controller.RegistroController">
    <children>
       <MenuBar>
         <menus>
@@ -89,7 +89,9 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <CheckBox fx:id="chkBeneficios" mnemonicParsing="false" text="Beneficios" />
+      <CheckBox fx:id="chkSeguro" mnemonicParsing="false" text="Seguro Medico" />
+      <CheckBox fx:id="chkAlimentacion" mnemonicParsing="false" text="Alimentacion" />
+      <CheckBox fx:id="chkTransporte" mnemonicParsing="false" text="Transporte" />
       <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#guardarOnClick" text="Agregar">
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
