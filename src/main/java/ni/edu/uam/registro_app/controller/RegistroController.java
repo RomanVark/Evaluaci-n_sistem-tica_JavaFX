@@ -8,7 +8,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ni.edu.uam.registro_app.dao.RegistroDao;
-import ni.edu.uam.registro_app.modelos.Estudiante;
 
 import java.time.LocalDate;
 
