@@ -13,25 +13,28 @@ import ni.edu.uam.registro_app.modelos.Estudiante;
 import java.time.LocalDate;
 
 public class RegistroController {
+
+
+
     RegistroDao listado = new RegistroDao();
+    @FXML
+    public RadioButton rbDeterminado;
+    @FXML
+    public RadioButton rbIndeterminado;
     @FXML
     private TextField txtNombres;
     @FXML
     private TextField txtApellidos;
     @FXML
-    private TextField txtCarrera;
+    private DatePicker dpfechaCont;
     @FXML
-    private DatePicker dpfechaNac;
-    @FXML
-    private CheckBox chktieneBeca;
+    private CheckBox chkBeneficios;
     @FXML
     private Label lblRegistro;
     @FXML
     private ImageView imgLogoUam;
     @FXML
-    private ComboBox<String> combGenero;
-    @FXML
-    private ComboBox<String> combFacultad;
+    private ComboBox<String> combCargo;
     @FXML
     private TableView<Estudiante> tbtablaRegistros;
     @FXML
