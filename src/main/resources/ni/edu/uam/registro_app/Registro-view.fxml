@@ -1,139 +1,322 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<?import com.sun.javafx.scene.control.ContextMenuContent.ArrowMenuItem?>
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="748.0" prefWidth="697.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.registro_app.controller.RegistroController">
-   <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="Nuevo">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Limpiar formulario para registrar otro" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Salir">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Cerrar aplicacion" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Acerca de">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Ver acerca del programa" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <ImageView fx:id="imgLogoUam" fitHeight="52.0" fitWidth="344.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/LogoUAM.png" />
-         </image></ImageView>
-      <Label text="REGISTRO DE EMPLEADOS">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <Label text="Nombres">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></Label>
-      <TextField fx:id="txtNombres" promptText="Juan Roman">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></TextField>
-      <Label text="Apellidos">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></Label>
-      <TextField fx:id="txtApellidos" promptText="Romero Mejia">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></TextField>
-      <Label fx:id="lblGenero" text="Cargo">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
-      </Label>
-      <ComboBox fx:id="combCargo" prefWidth="150.0">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </ComboBox>
-      <Label text="Area de Trabajo" />
-      <ListView fx:id="lvAreaTrabajo" prefHeight="200.0" prefWidth="200.0" />
-      <Label text="Fecha de contratación">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></Label>
-      <DatePicker fx:id="dpfechaCont" promptText="Ingrese su fecha de nacimiento">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></DatePicker>
-      <Label text="Tipo de Contrato" />
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-         <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </VBox.margin>
-         <children>
-            <RadioButton fx:id="rbDeterminado" mnemonicParsing="false" text="Determinado">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton fx:id="rbIndeterminado" mnemonicParsing="false" text="Indeterminado" />
-         </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </HBox>
-      <CheckBox fx:id="chkSeguro" mnemonicParsing="false" text="Seguro Medico" />
-      <CheckBox fx:id="chkAlimentacion" mnemonicParsing="false" text="Alimentacion" />
-      <CheckBox fx:id="chkTransporte" mnemonicParsing="false" text="Transporte" />
-      <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#guardarOnClick" text="Agregar">
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></Button>
-      <Label fx:id="lblRegistrosGuardados" text="Registros guardados." />
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-         <children>
-            <Button fx:id="btnGuardar" mnemonicParsing="false" text="Guardar" onAction="#guardarOnClick" />
-            <Button fx:id="btnActualizar" mnemonicParsing="false" text="Actualizar" onAction="#actualizarOnClick" />
-            <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" onAction="#limpiarOnClick"/>
-            <Button fx:id="btnEliminar" mnemonicParsing="false" text="Eliminar" onAction="#eliminarOnClick" />
-         </children>
-      </HBox>
-       <TableView fx:id="tbtablaRegistros" prefHeight="105.0" prefWidth="395.0">
-          <contextMenu>
-              <ContextMenu>
-                  <items>
-                      <MenuItem text="Editar" onAction="editarContextMenu"/>
-                      <MenuItem text="Eliminar" onAction="eliminarOnClick"/>
-                  </items>
-              </ContextMenu>
-          </contextMenu>
-        <columns>
-          <TableColumn fx:id="colNombre" prefWidth="95.0" resizable="false" text="Nombre" />
-          <TableColumn fx:id="colApellido" prefWidth="95.0" resizable="false" text="Apellido" />
-            <TableColumn fx:id="colCargo" prefWidth="95.0" resizable="false" text="Cargo" />
-            <TableColumn fx:id="colArea" prefWidth="95.0" resizable="false" text="Area" />
-           <TableColumn fx:id="colFecha" prefWidth="95.0" resizable="false" text="Fecha" />
-           <TableColumn fx:id="colContrato" prefWidth="95.0" resizable="false" text="Contrato" />
-           <TableColumn fx:id="colBeneficios" prefWidth="95.0" resizable="false" text="Beneficios" />
-        </columns>
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
-      </TableView>
-      <Label fx:id="lblRegistro" text="Registros guardados: 0">
-         <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </VBox.margin></Label>
-   </children>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
+<VBox
+        alignment="TOP_CENTER"
+        prefHeight="900.0"
+        prefWidth="750.0"
+        spacing="5.0"
+        onKeyPressed="#manejarTeclado"
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="ni.edu.uam.registro_app.controller.RegistroController">
+
+    <fx:define>
+
+        <ToggleGroup
+                fx:id="grupoContrato"/>
+
+    </fx:define>
+
+    <children>
+
+        <MenuBar>
+
+            <menus>
+
+                <Menu
+                        mnemonicParsing="false"
+                        text="Nuevo">
+
+                    <items>
+
+                        <MenuItem
+                                mnemonicParsing="false"
+                                text="Nuevo registro"/>
+
+                    </items>
+
+                </Menu>
+
+                <Menu
+                        mnemonicParsing="false"
+                        text="Salir">
+
+                    <items>
+
+                        <MenuItem
+                                mnemonicParsing="false"
+                                text="Cerrar aplicación"/>
+
+                    </items>
+
+                </Menu>
+
+                <Menu
+                        mnemonicParsing="false"
+                        text="Acerca de">
+
+                    <items>
+
+                        <MenuItem
+                                mnemonicParsing="false"
+                                text="Acerca del programa"/>
+
+                    </items>
+
+                </Menu>
+
+            </menus>
+
+        </MenuBar>
+
+        <ImageView
+                fx:id="imgLogoUam"
+                fitHeight="60.0"
+                fitWidth="350.0"
+                pickOnBounds="true"
+                preserveRatio="true">
+
+            <image>
+
+                <Image
+                        url="@images/LogoUAM.png"/>
+
+            </image>
+
+        </ImageView>
+
+        <Label
+                text="REGISTRO DE EMPLEADOS">
+
+            <font>
+
+                <Font size="26.0"/>
+
+            </font>
+
+        </Label>
+
+        <Label text="Nombres"/>
+
+        <TextField
+                fx:id="txtNombres"
+                maxWidth="350.0"
+                promptText="Ingrese los nombres"/>
+
+        <Label text="Apellidos"/>
+
+        <TextField
+                fx:id="txtApellidos"
+                maxWidth="350.0"
+                promptText="Ingrese los apellidos"/>
+
+        <Label text="Usuario"/>
+
+        <TextField
+                fx:id="txtUsuario"
+                maxWidth="350.0"
+                promptText="Mínimo 5 caracteres"/>
+
+        <Label text="Contraseña"/>
+
+        <PasswordField
+                fx:id="txtContrasena"
+                maxWidth="350.0"
+                promptText="Mínimo 8 caracteres"/>
+
+        <Label text="Cargo"/>
+
+        <ComboBox
+                fx:id="combCargo"
+                maxWidth="350.0"
+                prefWidth="350.0"/>
+
+        <Label text="Área de Trabajo"/>
+
+        <ListView
+                fx:id="lvAreaTrabajo"
+                maxWidth="350.0"
+                prefHeight="100.0"
+                prefWidth="350.0"/>
+
+        <Label
+                text="Fecha de contratación"/>
+
+        <DatePicker
+                fx:id="dpfechaCont"
+                maxWidth="350.0"
+                prefWidth="350.0"
+                promptText="Seleccione la fecha"/>
+
+        <Label
+                text="Tipo de Contrato"/>
+
+        <HBox
+                alignment="CENTER"
+                spacing="20.0">
+
+            <children>
+
+                <RadioButton
+                        fx:id="rbDeterminado"
+                        mnemonicParsing="false"
+                        text="Determinado"
+                        toggleGroup="$grupoContrato"/>
+
+                <RadioButton
+                        fx:id="rbIndeterminado"
+                        mnemonicParsing="false"
+                        text="Indeterminado"
+                        toggleGroup="$grupoContrato"/>
+
+            </children>
+
+        </HBox>
+
+        <Label text="Beneficios"/>
+
+        <HBox
+                alignment="CENTER"
+                spacing="20.0">
+
+            <children>
+
+                <CheckBox
+                        fx:id="chkSeguro"
+                        mnemonicParsing="false"
+                        text="Seguro Médico"/>
+
+                <CheckBox
+                        fx:id="chkAlimentacion"
+                        mnemonicParsing="false"
+                        text="Alimentación"/>
+
+                <CheckBox
+                        fx:id="chkTransporte"
+                        mnemonicParsing="false"
+                        text="Transporte"/>
+
+            </children>
+
+        </HBox>
+
+        <HBox
+                alignment="CENTER"
+                spacing="10.0">
+
+            <children>
+
+                <Button
+                        fx:id="btnGuardar"
+                        mnemonicParsing="false"
+                        onAction="#guardarOnClick"
+                        text="Guardar"/>
+
+                <Button
+                        fx:id="btnActualizar"
+                        mnemonicParsing="false"
+                        onAction="#actualizarOnClick"
+                        text="Actualizar"/>
+
+                <Button
+                        fx:id="btnLimpiar"
+                        mnemonicParsing="false"
+                        onAction="#limpiarOnClick"
+                        text="Limpiar"/>
+
+                <Button
+                        fx:id="btnEliminar"
+                        mnemonicParsing="false"
+                        onAction="#eliminarOnClick"
+                        text="Eliminar"/>
+
+            </children>
+
+        </HBox>
+
+        <TableView
+                fx:id="tbtablaRegistros"
+                onMouseClicked="#tablaMouseClicked"
+                prefHeight="220.0"
+                prefWidth="720.0">
+
+            <columns>
+
+                <TableColumn
+                        fx:id="colNombre"
+                        prefWidth="90.0"
+                        text="Nombre"/>
+
+                <TableColumn
+                        fx:id="colApellido"
+                        prefWidth="90.0"
+                        text="Apellido"/>
+
+                <TableColumn
+                        fx:id="colCargo"
+                        prefWidth="90.0"
+                        text="Cargo"/>
+
+                <TableColumn
+                        fx:id="colArea"
+                        prefWidth="100.0"
+                        text="Área"/>
+
+                <TableColumn
+                        fx:id="colFecha"
+                        prefWidth="100.0"
+                        text="Fecha"/>
+
+                <TableColumn
+                        fx:id="colContrato"
+                        prefWidth="100.0"
+                        text="Contrato"/>
+
+                <TableColumn
+                        fx:id="colBeneficios"
+                        prefWidth="150.0"
+                        text="Beneficios"/>
+
+            </columns>
+
+        </TableView>
+
+        <Label
+                fx:id="lblRegistro"
+                text="Registros guardados: 0"/>
+
+    </children>
+
+    <padding>
+
+        <Insets
+                bottom="10.0"
+                left="10.0"
+                right="10.0"
+                top="10.0"/>
+
+    </padding>
+
 </VBox>

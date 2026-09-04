@@ -23,16 +23,19 @@ public class LoginController {
     @FXML
     protected void ingresarOnClick() {
 
-        String usuario = txtUsuario.getText();
-        String password = txtContrasena.getText();
+        String usuario = txtUsuario.getText().trim();
+        String contrasena = txtContrasena.getText();
 
-        if (usuario.equals("admin") && password.equals("admin")) {
+        if (usuario.equals("admin")
+                && contrasena.equals("admin")) {
 
             abrirRegistro();
 
         } else {
 
-            lblMensaje.setText("Usuario o contraseña incorrectos");
+            lblMensaje.setText(
+                    "Usuario o contraseña incorrectos"
+            );
         }
     }
 
@@ -53,11 +56,11 @@ public class LoginController {
                     .getWindow();
 
             stage.setScene(scene);
-            stage.setTitle("Registro App");
-            stage.show();
+            stage.setTitle("Registro de Empleados");
+            stage.setResizable(true);
+            stage.centerOnScreen();
 
         } catch (Exception e) {
-
             e.printStackTrace();
         }
     }

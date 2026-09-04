@@ -8,28 +8,35 @@ import java.util.List;
 
 public class RegistroDao implements Crud<Colaborador> {
 
+    private final List<Colaborador> colaboradores;
+
+    public RegistroDao() {
+        colaboradores = new ArrayList<>();
+    }
+
     @Override
     public void agregar(Colaborador entidad) {
-
+        colaboradores.add(entidad);
     }
 
     @Override
     public void actualizar(int indice, Colaborador entidad) {
 
-    }
-
-    @Override
-    public void eleminar(int indice) {
-
+        if (indice >= 0 && indice < colaboradores.size()) {
+            colaboradores.set(indice, entidad);
+        }
     }
 
     @Override
     public void eliminar(int indice) {
 
+        if (indice >= 0 && indice < colaboradores.size()) {
+            colaboradores.remove(indice);
+        }
     }
 
     @Override
-    public List<Colaborador> obternerRegistros() {
-        return List.of();
+    public List<Colaborador> obtenerRegistros() {
+        return colaboradores;
     }
 }

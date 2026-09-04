@@ -67,7 +67,10 @@ public class RegistroController {
     private TableView<Colaborador> tbtablaRegistros;
 
     @FXML
-    private TableColumn<Colaborador, String> colNombreCompleto;
+    private TableColumn<Colaborador, String> colNombre;
+
+    @FXML
+    private TableColumn<Colaborador, String> colApellido;
 
     @FXML
     private TableColumn<Colaborador, String> colCargo;
@@ -87,9 +90,21 @@ public class RegistroController {
     @FXML
     private Label lblRegistro;
 
-
-
+    @FXML
     public void initialize() {
+
+        cargarCargos();
+
+        cargarAreas();
+
+        configurarTabla();
+
+        cargarLogo();
+
+        cargarTabla();
+    }
+
+    private void cargarCargos() {
 
         combCargo.getItems().addAll(
                 "Administrador",
@@ -99,6 +114,9 @@ public class RegistroController {
                 "Cajero",
                 "Supervisor"
         );
+    }
+
+    private void cargarAreas() {
 
         lvAreaTrabajo.getItems().addAll(
                 "Administración",
@@ -108,9 +126,16 @@ public class RegistroController {
                 "Caja",
                 "Recursos Humanos"
         );
+    }
 
-        colNombreCompleto.setCellValueFactory(
-                new PropertyValueFactory<>("nombreCompleto")
+    private void configurarTabla() {
+
+        colNombre.setCellValueFactory(
+                new PropertyValueFactory<>("nombres")
+        );
+
+        colApellido.setCellValueFactory(
+                new PropertyValueFactory<>("apellidos")
         );
 
         colCargo.setCellValueFactory(
@@ -132,6 +157,9 @@ public class RegistroController {
         colBeneficios.setCellValueFactory(
                 new PropertyValueFactory<>("beneficios")
         );
+    }
+
+    private void cargarLogo() {
 
         Image imagen = new Image(
                 getClass().getResourceAsStream(
@@ -140,60 +168,89 @@ public class RegistroController {
         );
 
         imgLogoUam.setImage(imagen);
-
-        cargarTabla();
     }
 
     private Colaborador leerDatos() {
 
-        String nombres = txtNombres.getText().trim();
-        String apellidos = txtApellidos.getText().trim();
-        String usuario = txtUsuario.getText().trim();
-        String contrasena = txtContrasena.getText();
-        String cargo = combCargo.getValue();
-        String area = lvAreaTrabajo.getSelectionModel().getSelectedItem();
-        LocalDate fecha = dpfechaCont.getValue();
+        String nombres =
+                txtNombres.getText().trim();
 
-        String contrato = "";
+        String apellidos =
+                txtApellidos.getText().trim();
+
+        String usuario =
+                txtUsuario.getText().trim();
+
+        String contrasena =
+                txtContrasena.getText();
+
+        String cargo =
+                combCargo.getValue();
+
+        String area =
+                lvAreaTrabajo
+                        .getSelectionModel()
+                        .getSelectedItem();
+
+        LocalDate fecha =
+                dpfechaCont.getValue();
+
+        String contrato;
 
         if (rbDeterminado.isSelected()) {
             contrato = "Determinado";
-        }
-
-        if (rbIndeterminado.isSelected()) {
+        } else {
             contrato = "Indeterminado";
         }
 
-        String beneficios = obtenerBeneficios();
+        String beneficios =
+                obtenerBeneficios();
 
         return new Colaborador(
+                cargo,
+                nombres,
+                usuario,
+                apellidos,
+                contrasena,
+                area,
+                fecha,
+                contrato,
+                beneficios
         );
     }
 
     private String obtenerBeneficios() {
 
-        StringBuilder beneficios = new StringBuilder();
+        StringBuilder beneficios =
+                new StringBuilder();
 
         if (chkSeguro.isSelected()) {
-            beneficios.append("Seguro médico");
+
+            beneficios.append(
+                    "Seguro médico"
+            );
         }
 
         if (chkAlimentacion.isSelected()) {
 
-            if (!beneficios.isEmpty()) {
+            if (beneficios.length() > 0) {
                 beneficios.append(", ");
             }
 
-            beneficios.append("Alimentación");
+            beneficios.append(
+                    "Alimentación"
+            );
         }
 
         if (chkTransporte.isSelected()) {
 
-            if (!beneficios.isEmpty()) {
+            if (beneficios.length() > 0) {
                 beneficios.append(", ");
             }
 
-            beneficios.append("Transporte");
+            beneficios.append(
+                    "Transporte"
+            );
         }
 
         return beneficios.toString();
@@ -206,21 +263,29 @@ public class RegistroController {
             return;
         }
 
-        Colaborador colaborador = leerDatos();
+        Colaborador colaborador =
+                leerDatos();
 
         listado.agregar(colaborador);
 
         cargarTabla();
+
         limpiarCampos();
 
-        mostrarInformacion("Colaborador guardado correctamente.");
+        mostrarInformacion(
+                "Colaborador guardado correctamente."
+        );
     }
 
     @FXML
     protected void actualizarOnClick() {
 
         if (indiceSeleccionado == -1) {
-            mostrarAlerta("Seleccione un colaborador para actualizar.");
+
+            mostrarAlerta(
+                    "Seleccione un colaborador para actualizar."
+            );
+
             return;
         }
 
@@ -228,38 +293,54 @@ public class RegistroController {
             return;
         }
 
-        Colaborador colaborador = leerDatos();
+        Colaborador colaborador =
+                leerDatos();
 
-        listado.actualizar(indiceSeleccionado, colaborador);
+        listado.actualizar(
+                indiceSeleccionado,
+                colaborador
+        );
 
         cargarTabla();
+
         limpiarCampos();
 
-        mostrarInformacion("Colaborador actualizado correctamente.");
+        mostrarInformacion(
+                "Colaborador actualizado correctamente."
+        );
     }
 
     @FXML
     protected void eliminarOnClick() {
 
-        int indice = tbtablaRegistros
-                .getSelectionModel()
-                .getSelectedIndex();
+        int indice =
+                tbtablaRegistros
+                        .getSelectionModel()
+                        .getSelectedIndex();
 
         if (indice == -1) {
-            mostrarAlerta("Seleccione un colaborador para eliminar.");
+
+            mostrarAlerta(
+                    "Seleccione un colaborador para eliminar."
+            );
+
             return;
         }
 
         listado.eliminar(indice);
 
         cargarTabla();
+
         limpiarCampos();
 
-        mostrarInformacion("Colaborador eliminado correctamente.");
+        mostrarInformacion(
+                "Colaborador eliminado correctamente."
+        );
     }
 
     @FXML
     protected void limpiarOnClick() {
+
         limpiarCampos();
     }
 
@@ -267,50 +348,128 @@ public class RegistroController {
 
         ObservableList<Colaborador> colaboradores =
                 FXCollections.observableArrayList(
-                        listado.obternerRegistros()
+                        listado.obtenerRegistros()
                 );
 
-        tbtablaRegistros.setItems(colaboradores);
+        tbtablaRegistros.setItems(
+                colaboradores
+        );
 
         lblRegistro.setText(
                 "Registros guardados: "
-                        + listado.obternerRegistros().size()
+                        + listado
+                        .obtenerRegistros()
+                        .size()
         );
     }
 
     private boolean validarCampos() {
 
-        if (txtNombres.getText().trim().isEmpty()
-                || txtApellidos.getText().trim().isEmpty()
-                || txtUsuario.getText().trim().isEmpty()
-                || txtContrasena.getText().isEmpty()
-                || combCargo.getValue() == null
-                || lvAreaTrabajo.getSelectionModel().getSelectedItem() == null
-                || dpfechaCont.getValue() == null
-                || grupoContrato.getSelectedToggle() == null) {
+        if (txtNombres.getText().trim().isEmpty()) {
 
-            mostrarAlerta("Ningún campo puede quedar vacío.");
+            mostrarAlerta(
+                    "Ingrese los nombres."
+            );
+
             return false;
         }
 
-        if (txtUsuario.getText().trim().length() < 5) {
+        if (txtApellidos.getText().trim().isEmpty()) {
+
+            mostrarAlerta(
+                    "Ingrese los apellidos."
+            );
+
+            return false;
+        }
+
+        if (txtUsuario.getText().trim().isEmpty()) {
+
+            mostrarAlerta(
+                    "Ingrese un usuario."
+            );
+
+            return false;
+        }
+
+        if (txtContrasena.getText().isEmpty()) {
+
+            mostrarAlerta(
+                    "Ingrese una contraseña."
+            );
+
+            return false;
+        }
+
+        if (combCargo.getValue() == null) {
+
+            mostrarAlerta(
+                    "Seleccione un cargo."
+            );
+
+            return false;
+        }
+
+        if (lvAreaTrabajo
+                .getSelectionModel()
+                .getSelectedItem() == null) {
+
+            mostrarAlerta(
+                    "Seleccione un área de trabajo."
+            );
+
+            return false;
+        }
+
+        if (dpfechaCont.getValue() == null) {
+
+            mostrarAlerta(
+                    "Seleccione una fecha de contratación."
+            );
+
+            return false;
+        }
+
+        if (grupoContrato.getSelectedToggle() == null) {
+
+            mostrarAlerta(
+                    "Seleccione un tipo de contrato."
+            );
+
+            return false;
+        }
+
+        if (txtUsuario
+                .getText()
+                .trim()
+                .length() < 5) {
+
             mostrarAlerta(
                     "El usuario debe tener al menos 5 caracteres."
             );
+
             return false;
         }
 
-        if (txtContrasena.getText().length() < 8) {
+        if (txtContrasena
+                .getText()
+                .length() < 8) {
+
             mostrarAlerta(
                     "La contraseña debe tener al menos 8 caracteres."
             );
+
             return false;
         }
 
-        if (dpfechaCont.getValue().isAfter(LocalDate.now())) {
+        if (dpfechaCont
+                .getValue()
+                .isAfter(LocalDate.now())) {
+
             mostrarAlerta(
                     "La fecha de contratación no puede ser posterior a la fecha actual."
             );
+
             return false;
         }
 
@@ -329,7 +488,9 @@ public class RegistroController {
     }
 
     @FXML
-    private void tablaMouseClicked(MouseEvent event) {
+    private void tablaMouseClicked(
+            MouseEvent event
+    ) {
 
         if (event.getClickCount() == 2) {
 
@@ -338,84 +499,99 @@ public class RegistroController {
                             .getSelectionModel()
                             .getSelectedItem();
 
-            if (colaborador != null) {
-
-                indiceSeleccionado =
-                        tbtablaRegistros
-                                .getSelectionModel()
-                                .getSelectedIndex();
-
-                txtNombres.setText(
-                        colaborador.getNombres()
-                );
-
-                txtApellidos.setText(
-                        colaborador.getApellidos()
-                );
-
-                txtUsuario.setText(
-                        colaborador.getUsuario()
-                );
-
-                txtContrasena.setText(
-                        colaborador.getContrasena()
-                );
-
-                combCargo.setValue(
-                        colaborador.getCargo()
-                );
-
-                lvAreaTrabajo
-                        .getSelectionModel()
-                        .select(
-                                colaborador.getAreaTrabajo()
-                        );
-
-                dpfechaCont.setValue(
-                        colaborador.getFechaContratacion()
-                );
-
-                if (colaborador
-                        .getTipoContrato()
-                        .equals("Determinado")) {
-
-                    rbDeterminado.setSelected(true);
-
-                } else {
-
-                    rbIndeterminado.setSelected(true);
-                }
-
-                cargarBeneficios(
-                        colaborador.getBeneficios()
-                );
+            if (colaborador == null) {
+                return;
             }
+
+            indiceSeleccionado =
+                    tbtablaRegistros
+                            .getSelectionModel()
+                            .getSelectedIndex();
+
+            txtNombres.setText(
+                    colaborador.getNombres()
+            );
+
+            txtApellidos.setText(
+                    colaborador.getApellidos()
+            );
+
+            txtUsuario.setText(
+                    colaborador.getUsuario()
+            );
+
+            txtContrasena.setText(
+                    colaborador.getContrasena()
+            );
+
+            combCargo.setValue(
+                    colaborador.getCargo()
+            );
+
+            lvAreaTrabajo
+                    .getSelectionModel()
+                    .select(
+                            colaborador.getAreaTrabajo()
+                    );
+
+            dpfechaCont.setValue(
+                    colaborador.getFechaContratacion()
+            );
+
+            if ("Determinado".equals(
+                    colaborador.getTipoContrato()
+            )) {
+
+                rbDeterminado
+                        .setSelected(true);
+
+            } else {
+
+                rbIndeterminado
+                        .setSelected(true);
+            }
+
+            cargarBeneficios(
+                    colaborador.getBeneficios()
+            );
         }
     }
 
-    private void cargarBeneficios(String beneficios) {
+    private void cargarBeneficios(
+            String beneficios
+    ) {
 
         chkSeguro.setSelected(
-                beneficios.contains("Seguro médico")
+                beneficios.contains(
+                        "Seguro médico"
+                )
         );
 
         chkAlimentacion.setSelected(
-                beneficios.contains("Alimentación")
+                beneficios.contains(
+                        "Alimentación"
+                )
         );
 
         chkTransporte.setSelected(
-                beneficios.contains("Transporte")
+                beneficios.contains(
+                        "Transporte"
+                )
         );
     }
 
     @FXML
-    private void manejarTeclado(KeyEvent event) {
+    private void manejarTeclado(
+            KeyEvent event
+    ) {
 
-        if (event.getCode() == KeyCode.ENTER) {
+        if (event.getCode()
+                == KeyCode.ENTER) {
 
             guardarOnClick();
 
-        } else if (event.getCode() == KeyCode.ESCAPE) {
+        } else if (event.getCode()
+                == KeyCode.ESCAPE) {
 
             limpiarCampos();
         }
@@ -449,28 +625,44 @@ public class RegistroController {
         indiceSeleccionado = -1;
     }
 
-    private void mostrarAlerta(String mensaje) {
+    private void mostrarAlerta(
+            String mensaje
+    ) {
 
         Alert alert = new Alert(
                 Alert.AlertType.WARNING
         );
 
-        alert.setTitle("Validación");
+        alert.setTitle(
+                "Validación"
+        );
+
         alert.setHeaderText(null);
-        alert.setContentText(mensaje);
+
+        alert.setContentText(
+                mensaje
+        );
 
         alert.showAndWait();
     }
 
-    private void mostrarInformacion(String mensaje) {
+    private void mostrarInformacion(
+            String mensaje
+    ) {
 
         Alert alert = new Alert(
                 Alert.AlertType.INFORMATION
         );
 
-        alert.setTitle("Información");
+        alert.setTitle(
+                "Información"
+        );
+
         alert.setHeaderText(null);
-        alert.setContentText(mensaje);
+
+        alert.setContentText(
+                mensaje
+        );
 
         alert.showAndWait();
     }
