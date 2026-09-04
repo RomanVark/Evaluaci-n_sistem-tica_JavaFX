@@ -1,8 +1,8 @@
 module ni.edu.uam.registro_app {
+
     requires javafx.controls;
     requires javafx.fxml;
     requires static lombok;
-    requires java.desktop;
 
     opens ni.edu.uam.registro_app.controller to javafx.fxml;
     opens ni.edu.uam.registro_app.modelos to javafx.base;
