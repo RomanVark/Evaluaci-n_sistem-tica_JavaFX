@@ -67,6 +67,7 @@
 
                         <MenuItem
                                 mnemonicParsing="false"
+                                onAction="#salirAplicacion"
                                 text="Cerrar aplicación"/>
 
                     </items>
@@ -251,6 +252,12 @@
                         mnemonicParsing="false"
                         onAction="#eliminarOnClick"
                         text="Eliminar"/>
+
+                <Button
+                        fx:id="btnSalir"
+                        mnemonicParsing="false"
+                        onAction="#salirAplicacion"
+                        text="Salir"/>
 
             </children>
 

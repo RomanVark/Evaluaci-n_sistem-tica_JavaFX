@@ -1,5 +1,6 @@
 package ni.edu.uam.registro_app.controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import ni.edu.uam.registro_app.dao.RegistroDao;
 import ni.edu.uam.registro_app.modelos.Colaborador;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class RegistroController {
 
@@ -665,5 +667,21 @@ public class RegistroController {
         );
 
         alert.showAndWait();
+    }
+
+    @FXML
+    private void salirAplicacion() {
+
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alerta.setTitle("Salir");
+        alerta.setHeaderText("¿Desea salir de la aplicación?");
+        alerta.setContentText("Presione OK para cerrar el programa.");
+
+        Optional<ButtonType> respuesta = alerta.showAndWait();
+
+        if (respuesta.isPresent() && respuesta.get() == ButtonType.OK) {
+            Platform.exit();
+        }
     }
 }
